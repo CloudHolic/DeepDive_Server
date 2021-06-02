@@ -1,3 +1,4 @@
+using DeepDive_Server.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -21,9 +22,19 @@ namespace DeepDive_Server
         {
 
             services.AddControllers();
+            services.AddSignalR();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "DeepDive_Server", Version = "v1" });
+            });
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("ClientPermission", policy =>
+                {
+                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000").AllowCredentials();
+                });
             });
         }
 
@@ -39,6 +50,8 @@ namespace DeepDive_Server
 
             app.UseHttpsRedirection();
 
+            app.UseCors("ClientPermission");
+
             app.UseRouting();
 
             app.UseAuthorization();
@@ -46,6 +59,7 @@ namespace DeepDive_Server
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<ChatHub>("/hubs/chat");
             });
         }
     }
