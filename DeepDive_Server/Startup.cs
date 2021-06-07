@@ -23,6 +23,8 @@ namespace DeepDive_Server
             services.AddControllers();
             services.AddSignalR();
 
+            services.AddDbContext<DbContext.DeepDiveContext>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "DeepDive_Server", Version = "v1" });
