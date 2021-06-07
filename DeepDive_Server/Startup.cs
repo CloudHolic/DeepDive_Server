@@ -56,7 +56,7 @@ namespace DeepDive_Server
             app.UseRouting();
 
             app.UseAuthorization();
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

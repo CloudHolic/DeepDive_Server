@@ -2,17 +2,17 @@
 
 #nullable disable
 
-namespace DeepDive_Server.Models
+namespace DeepDive_Server.Models.Db
 {
-    public class BossSkill
+    public class CharacterSkill
     {
         public int Id { get; set; }
-        public int? BossId { get; set; }
+        public int? CharacterId { get; set; }
         public int? SkillId { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 
-        public virtual Boss Boss { get; set; }
+        public virtual Character Character { get; set; }
         public virtual Skill Skill { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿using DeepDive_Server.Models;
+﻿using DeepDive_Server.Models.Db;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 

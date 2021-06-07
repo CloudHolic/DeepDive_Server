@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace DeepDive_Server.Models
+namespace DeepDive_Server.Models.Db
 {
     public sealed class Character
     {
